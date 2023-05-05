@@ -1,7 +1,7 @@
 def findMostCals(input_array):
     if input_array[-1] != '':
         input_array.append('')
-        
+
     totalCals = {}
     elf = 1
     runningTotal = 0
@@ -22,11 +22,13 @@ def findMostCals(input_array):
     return totalCals[elfWithMost]
 
 
-file = open('advent_of_code_day_1/input.txt', 'r')
-arrayOfLines = file.readlines()
+def txt_to_array(file_path):
+    try:
+        file = open(file_path, 'r')
+        return [x.strip('\n') for x in file.readlines()]
+    finally:
+        file.close()
+        
 
-arrayOfLines = [x.strip('\n') for x in arrayOfLines]
-
+arrayOfLines = txt_to_array('advent_of_code_day_1/input.txt')
 findMostCals(arrayOfLines)
-
-file.close()
